@@ -6,71 +6,161 @@
 
     <style>
         body{
-            background:#ffe6f0;
+            margin:0;
+            padding:0;
             overflow:hidden;
+            background:#fff0f5;
+            font-family:Arial, sans-serif;
             text-align:center;
-            font-family:Arial;
         }
 
         h1{
-            margin-top:120px;
-            color:#ff3385;
+            margin-top:80px;
+            color:#ff3b85;
             font-size:55px;
         }
 
-        #yes{
-            background:#ff3385;
-            color:white;
-            border:none;
-            padding:15px 35px;
-            border-radius:40px;
+        p{
+            color:#444;
             font-size:22px;
-            cursor:pointer;
-            margin:20px;
-        }
-
-        #no{
-            position:absolute;
-            background:#444;
-            color:white;
-            border:none;
-            padding:15px 35px;
-            border-radius:40px;
-            font-size:22px;
-            cursor:pointer;
         }
 
         img{
-            width:250px;
+            width:260px;
             border-radius:20px;
+            margin-top:20px;
+        }
+
+        .buttons{
             margin-top:40px;
+        }
+
+        button{
+            padding:15px 35px;
+            font-size:22px;
+            border:none;
+            border-radius:40px;
+            cursor:pointer;
+            margin:20px;
+            transition:0.3s;
+        }
+
+        #yes{
+            background:#ff3b85;
+            color:white;
+        }
+
+        #yes:hover{
+            transform:scale(1.1);
+        }
+
+        #no{
+            background:black;
+            color:white;
+            position:absolute;
+        }
+
+        .heart{
+            position:fixed;
+            color:red;
+            animation:fall 5s linear infinite;
+            top:-10px;
+        }
+
+        @keyframes fall{
+            0%{
+                transform:translateY(-10px);
+            }
+            100%{
+                transform:translateY(110vh);
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <img src="https://media.tenor.com/dKYs1y0qWeAAAAAM/cute-cat.gif">
+    <h1>Will You Be Mine Forever? ❤️</h1>
 
-    <h1>Will You Stay Forever? ❤️</h1>
+    <p>
+        I don’t need perfect moments,<br>
+        I just need you beside me 🥺❤️
+    </p>
 
-    <button id="yes" onclick="love()">Yes 💖</button>
+    <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif">
 
-    <button id="no" onmouseover="run()">No 😭</button>
+    <div class="buttons">
+        <button id="yes" onclick="love()">Yes ❤️</button>
+
+        <button id="no" onmouseover="run()">No 💔</button>
+    </div>
 
 <script>
 
 function love(){
-    alert("Yayyyyy ❤️🥹");
+
+    alert("YAYYYYY ❤️🥹\nYou just made me the happiest person alive!");
+
+    for(let i=0; i<80; i++){
+
+        let heart=document.createElement("div");
+
+        heart.innerHTML="❤️";
+
+        heart.style.position="fixed";
+        heart.style.left=Math.random()*100+"vw";
+        heart.style.top=Math.random()*100+"vh";
+        heart.style.fontSize=(Math.random()*30+20)+"px";
+
+        document.body.appendChild(heart);
+
+        setTimeout(()=>{
+            heart.remove();
+        },3000);
+    }
 }
 
 function run(){
+
+    let texts=[
+        "Think again 🥺",
+        "Please don't break my heart 💔",
+        "Nooooo 😭",
+        "Give me one chance ❤️",
+        "I’ll keep annoying you forever 😭",
+        "You are too cute to say no 🥹",
+        "My heart is crying 💔",
+        "Pleaseeeee 😭❤️",
+        "Are you really sure? 🥺",
+        "I already imagined our future 😭"
+    ];
+
+    let randomText=texts[Math.floor(Math.random()*texts.length)];
+
+    document.getElementById("no").innerHTML=randomText;
 
     let x=Math.random()*1000;
     let y=Math.random()*500;
 
     document.getElementById("no").style.left=x+"px";
     document.getElementById("no").style.top=y+"px";
+}
+
+for(let i=0;i<30;i++){
+
+    let heart=document.createElement("div");
+
+    heart.innerHTML="💖";
+
+    heart.classList.add("heart");
+
+    heart.style.left=Math.random()*100+"vw";
+
+    heart.style.fontSize=(Math.random()*25+10)+"px";
+
+    heart.style.animationDuration=(Math.random()*3+2)+"s";
+
+    document.body.appendChild(heart);
 }
 
 </script>
