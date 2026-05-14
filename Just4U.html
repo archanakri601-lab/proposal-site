@@ -1,148 +1,170 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Only For You ❤️</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Only For You ❤️</title>
 
-    <style>
-        body{
-            margin:0;
-            padding:0;
-            overflow:hidden;
-            background:#fff0f5;
-            font-family:Arial, sans-serif;
-            text-align:center;
-        }
+<style>
 
-        h1{
-            margin-top:80px;
-            color:#ff3b85;
-            font-size:55px;
-        }
+body{
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    font-family:Arial, sans-serif;
+    background:#fff0f5;
+    text-align:center;
+}
 
-        p{
-            color:#444;
-            font-size:22px;
-        }
+/* MAIN PAGE */
 
-        img{
-            width:260px;
-            border-radius:20px;
-            margin-top:20px;
-        }
+.main{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
 
-        .buttons{
-            margin-top:40px;
-        }
+h1{
+    color:#ff2e7a;
+    font-size:55px;
+    margin-bottom:10px;
+}
 
-        button{
-            padding:15px 35px;
-            font-size:22px;
-            border:none;
-            border-radius:40px;
-            cursor:pointer;
-            margin:20px;
-            transition:0.3s;
-        }
+p{
+    font-size:22px;
+    color:#444;
+    line-height:35px;
+}
 
-        #yes{
-            background:#ff3b85;
-            color:white;
-        }
+img{
+    width:280px;
+    border-radius:20px;
+    margin-top:20px;
+}
 
-        #yes:hover{
-            transform:scale(1.1);
-        }
+.buttons{
+    margin-top:35px;
+}
 
-        #no{
-            background:black;
-            color:white;
-            position:absolute;
-        }
+button{
+    padding:15px 35px;
+    font-size:22px;
+    border:none;
+    border-radius:40px;
+    cursor:pointer;
+    margin:15px;
+    transition:0.3s;
+}
 
-        .heart{
-            position:fixed;
-            color:red;
-            animation:fall 5s linear infinite;
-            top:-10px;
-        }
+#yes{
+    background:#ff2e7a;
+    color:white;
+}
 
-        @keyframes fall{
-            0%{
-                transform:translateY(-10px);
-            }
-            100%{
-                transform:translateY(110vh);
-            }
-        }
-    </style>
+#yes:hover{
+    transform:scale(1.1);
+}
+
+#no{
+    background:black;
+    color:white;
+}
+
+/* HEARTS */
+
+.heart{
+    position:fixed;
+    top:-20px;
+    color:red;
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+    0%{
+        transform:translateY(-10vh);
+    }
+
+    100%{
+        transform:translateY(110vh);
+    }
+}
+
+</style>
 </head>
 
 <body>
 
-    <h1>Will You Be Mine Forever? ❤️</h1>
+<div class="main">
 
-    <p>
-        I don’t need perfect moments,<br>
-        I just need you beside me 🥺❤️
-    </p>
+<h1>Will You Be Mine Forever? ❤️</h1>
 
-    <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif">
+<p>
+I don't need perfect moments ❤️<br>
+I just need you beside me 🥺
+</p>
 
-    <div class="buttons">
-        <button id="yes" onclick="love()">Yes ❤️</button>
+<img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif">
 
-        <button id="no" onmouseover="run()">No 💔</button>
-    </div>
+<div class="buttons">
+
+<button id="yes" onclick="yesPage()">Yes ❤️</button>
+
+<button id="no" onclick="noPage()">No 💔</button>
+
+</div>
+
+</div>
 
 <script>
 
-function love(){
+/* YES PAGE */
 
-document.body.innerHTML = `
+function yesPage(){
+
+document.body.innerHTML=`
 
 <div style="
 height:100vh;
-background:#fff0f5;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-font-family:Arial;
+background:#fff0f5;
 text-align:center;
-overflow:hidden;
+padding:20px;
 ">
 
 <img 
 src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif"
-width="320"
 style="
+width:320px;
 border-radius:25px;
 box-shadow:0 0 25px pink;
 "
 >
 
 <h1 style="
-color:#ff3b85;
-font-size:60px;
-margin-top:30px;
+color:#ff2e7a;
+font-size:55px;
+margin-top:25px;
 ">
-I knew you would accept it ❤️
+I Knew You Would Accept ❤️
 </h1>
 
 <p style="
 font-size:28px;
 color:#444;
 line-height:45px;
-margin-top:15px;
 ">
-Now you are officially mine forever 🥹💍 <br>
+Now you are officially mine forever 🥺💍<br>
 You just made my life beautiful ❤️
 </p>
 
 <h2 style="
-margin-top:25px;
-color:#ff3b85;
+color:#ff2e7a;
+margin-top:20px;
 ">
 Forever Starts Here ✨
 </h2>
@@ -151,65 +173,110 @@ Forever Starts Here ✨
 
 `;
 
-for(let i=0; i<120; i++){
+createHearts();
 
-    let heart=document.createElement("div");
+}
 
-    heart.innerHTML="💖";
+/* NO PAGE */
 
-    heart.style.position="fixed";
-    heart.style.left=Math.random()*100+"vw";
-    heart.style.top="-20px";
-    heart.style.fontSize=(Math.random()*35+15)+"px";
-    heart.style.animation="fall 4s linear infinite";
+function noPage(){
 
-    document.body.appendChild(heart);
+let messages=[
+"Think Again 🥺",
+"Please Don't Break My Heart 💔",
+"You Hurt My Heart 😭",
+"I'll Wait Forever ❤️",
+"Please One Chance 🥺",
+"Nooooo 😭",
+"My Heart Is Crying 💔",
+"Why So Mean 😭❤️",
+"I Already Imagined Our Future 🥺",
+"Please Say Yes ❤️"
+];
+
+let randomMessage=messages[Math.floor(Math.random()*messages.length)];
+
+document.body.innerHTML=`
+
+<div style="
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+background:black;
+text-align:center;
+padding:20px;
+">
+
+<img 
+src="https://media.giphy.com/media/OPU6wzx8JrHna/giphy.gif"
+style="
+width:300px;
+border-radius:20px;
+"
+>
+
+<h1 style="
+color:red;
+font-size:50px;
+margin-top:25px;
+">
+${randomMessage}
+</h1>
+
+<p style="
+font-size:28px;
+color:white;
+line-height:45px;
+">
+You really broke my heart 💔😭
+</p>
+
+<button onclick="location.reload()" style="
+padding:15px 35px;
+font-size:22px;
+border:none;
+border-radius:40px;
+background:#ff2e7a;
+color:white;
+margin-top:30px;
+cursor:pointer;
+">
+Come Back ❤️
+</button>
+
+</div>
+
+`;
+
+}
+
+/* HEART ANIMATION */
+
+function createHearts(){
+
+for(let i=0;i<80;i++){
+
+let heart=document.createElement("div");
+
+heart.innerHTML="💖";
+
+heart.classList.add("heart");
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(Math.random()*30+15)+"px";
+
+heart.style.animationDuration=(Math.random()*3+2)+"s";
+
+document.body.appendChild(heart);
+
 }
 
 }
 
-function run(){
-
-    let texts=[
-        "Think again 🥺",
-        "Please don't break my heart 💔",
-        "Nooooo 😭",
-        "Give me one chance ❤️",
-        "I’ll keep annoying you forever 😭",
-        "You are too cute to say no 🥹",
-        "My heart is crying 💔",
-        "Pleaseeeee 😭❤️",
-        "Are you really sure? 🥺",
-        "I already imagined our future 😭"
-    ];
-
-    let randomText=texts[Math.floor(Math.random()*texts.length)];
-
-    document.getElementById("no").innerHTML=randomText;
-
-    let x=Math.random()*1000;
-    let y=Math.random()*500;
-
-    document.getElementById("no").style.left=x+"px";
-    document.getElementById("no").style.top=y+"px";
-}
-
-for(let i=0;i<30;i++){
-
-    let heart=document.createElement("div");
-
-    heart.innerHTML="💖";
-
-    heart.classList.add("heart");
-
-    heart.style.left=Math.random()*100+"vw";
-
-    heart.style.fontSize=(Math.random()*25+10)+"px";
-
-    heart.style.animationDuration=(Math.random()*3+2)+"s";
-
-    document.body.appendChild(heart);
-}
+createHearts();
 
 </script>
 
